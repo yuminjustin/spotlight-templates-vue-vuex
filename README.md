@@ -1,2 +1,4 @@
 # spotlight-templates-vue_all
-spotlight templates vue+vuex+router+element-ui环境
+spotlight scaffold template for vue+vuex+router+element-ui
+<br><br>
+It‘s comming
