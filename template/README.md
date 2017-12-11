@@ -17,7 +17,7 @@ This template is base on webpack, support for vuejs<br>
 
 2.vue + vue-router + vuex + element-ui；<br><br>
 
-注：跟随vue官方配置，官方配置非常已非常完善，本模板只有细微不同。<br>
-    Follow the vue official configuration, the official configuration has been very perfect, the template is only slightly different.<br><br>
+注：跟随vue官方配置。<br>
+    Follow the vue official configuration.<br><br>
 
 enjoy!
