@@ -1,0 +1,36 @@
+{
+    "data": [
+        {
+            "name": "菜单一",
+            "idx": 0,
+            "group": [
+                {
+                    "name": "son 1.1",
+                    "idx": "0-0",
+                    "url": "/test1"
+                },
+                {
+                    "name": "son 1.2",
+                    "idx": "0-1",
+                    "url": "/test2"
+                }
+            ]
+        },
+        {
+            "name": "菜单二",
+            "idx": 1,
+            "group": [
+                {
+                    "name": "son 2.1",
+                    "idx": "1-0",
+                    "url": "/test3"
+                },
+                {
+                    "name": "son 2.2",
+                    "idx": "1-1",
+                    "url": "/dsfasdf"
+                }
+            ]
+        }
+    ]
+}
