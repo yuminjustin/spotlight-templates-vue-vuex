@@ -6,7 +6,7 @@
             </el-col>
             <el-col :span="18">
                 <p class="r user_info">
-                    <span>{{$store.state.userInfo.name}}</span> ,你好
+                    <span>\{{$store.state.userInfo.name}}</span> ,你好
                 </p>
             </el-col>
         </el-row>
