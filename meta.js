@@ -16,10 +16,5 @@ module.exports = {
       "message": "作者/ author"
     }
   },
-  "plugins": {
-    "metalsmith-ignore": [
-      "components/*"
-    ]
-  },
   "completeMessage": "开始你的项目:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\n"
 };
