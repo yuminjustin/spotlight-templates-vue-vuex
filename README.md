@@ -1,4 +1,4 @@
-## spotlight-templates-normal
+## spotlight-templates-vue_all
 spotlight scaffold template for vuejs<br>
 
 ## Use：
