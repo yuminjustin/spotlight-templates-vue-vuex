@@ -21,6 +21,17 @@ This template is base on webpack, support for vuejs<br>
 
 2.vue + vue-router + vuex + [element-ui](http://element.eleme.io/)；<br><br>
 
+<font color="green">如果使用的history路由需要做以下操作：</font><br/>
+<font color="orange">1)、在config.js中需要将dev和build的html5Router属性设置成true;</font><br/>
+<font color="red">2)、gulp需要全局安装;</font><br/>
+<font color="cyan">
+   3)、此模板打包已支持Apache, 你只需要确认你的Apache开启rewrite功能(ngix 需要另外配置，如下);
+</font><br/>
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
 注：跟随vue官方配置。<br>
     Follow the vue official configuration.<br><br>
 
