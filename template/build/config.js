@@ -10,6 +10,7 @@ module.exports = {
     newStatic: 'static',
     outputPath: '../../dist', // 输出目录 临时
     gulpPath: 'dist', // gulp 最后输出目录
+    html5Router: false, // html5 router  gulp使用
     htmlOption: { // 对应 entry
       app: {
         title: 'hello vue',
