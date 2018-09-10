@@ -9,7 +9,7 @@
             </el-submenu>
         </template>
         <template v-else>
-            <el-menu-item :index="String(idx)" @click="openPage(item)">{{item.name}}</el-menu-item>
+            <el-menu-item :index="String(idx)" @click="openPage(item)">\{{item.name}}</el-menu-item>
         </template>
     </div>
 </template>
