@@ -1,12 +1,12 @@
 /* polyfill IE */
-import 'babel-polyfill'
+import '@babel/polyfill'
 /* vonder*/
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 /* styles*/
 import 'element-ui/lib/theme-chalk/index.css'
-import "@/assets/css/reset.css"
-import "@/assets/css/page.css"
+import "B/assets/css/reset.css"
+import "B/assets/css/page.css"
 
 /* structure*/
 import App from './App'

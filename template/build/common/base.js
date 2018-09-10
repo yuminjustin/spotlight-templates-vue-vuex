@@ -1,8 +1,10 @@
 /* webpack基础配置 */
 var path = require('path')
-var utils = require("./common/utils")
-var config = require("./config")
-var vueLoader = require("./vue_load")
+var config = require("../config")
+
+var codeBase = path.join(__dirname, '../../src'),
+    _dir = process.env.NODE_ENV === 'production' ? './static' : 'static'
+
 
 module.exports = {
     entry: config.entry,
@@ -10,27 +12,26 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': utils.resolve('../src'),
-            'C': utils.resolve('../src/components'),
+            'B': codeBase,
+            'C': path.join(__dirname, '../../src/components'), // 组件别名 方便使用
         }
     },
     module: {
         rules: [{
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [utils.resolve('../src')]
+                include: [codeBase]
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                options: vueLoader
+                loader: 'vue-loader'
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('image/[name].[hash:7].[ext]')
+                    name: path.posix.join(_dir, 'image/[name].[hash:5].[ext]') //image 文件夹
                 }
             },
             {
@@ -38,7 +39,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
+                    name: path.posix.join(_dir, 'media/[name].[hash:5].[ext]') //media 文件夹
                 }
             },
             {
@@ -46,7 +47,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+                    name: path.posix.join(_dir, 'fonts/[name].[hash:5].[ext]') //fonts 文件夹
                 }
             }
         ]

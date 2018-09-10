@@ -9,7 +9,7 @@ module.exports = {
       "type": "string",
       "required": false,
       "message": "项目描述/ description",
-      "default": "A vuejs project"
+      "default": "A vue+vuex project"
     },
     "author": {
       "type": "string",

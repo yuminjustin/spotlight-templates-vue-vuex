@@ -1,5 +1,5 @@
-## spotlight-templates-vue_all
-spotlight scaffold template for vuejs<br>
+## spotlight-templates-vue
+spotlight scaffold template for vue<br>
 
 ## Use：
 
@@ -32,7 +32,6 @@ This template is base on webpack, support for vuejs<br>
         try_files $uri $uri/ /index.html;
     }
 
-注：跟随vue官方配置。<br>
-    Follow the vue official configuration.<br><br>
+3.Upgrade to webpack4
 
 enjoy!
