@@ -1,9 +1,9 @@
-## spotlight-templates-vue
-spotlight scaffold template for vue<br>
+## spotlight-templates-vue-vuex
+spotlight scaffold template for vue+vuex<br>
 
 ## Use：
 
-     spotlight init vue_all my-project
+     spotlight vuex my-project
 
      cd my-project
 
