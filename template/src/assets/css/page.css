@@ -17,14 +17,15 @@ header h1 {
     text-indent: 1em;
 }
 
-header .user_info {
+.user_info {
     color: #fff;
     letter-spacing: 2px;
     line-height: 48px;
     padding: 0 12px;
+    composes: r from './reset.css';
 }
 
-header .user_info a {
+.user_info a {
     color: #fff;
 }
 
@@ -32,10 +33,13 @@ header .user_info a {
     margin-top: 100px;
     min-height: 100px;
     height: auto;
+    composes: oh from './reset.css';
+    composes: c from './reset.css';
 }
 
 .main_content {
     padding: 12px;
+    composes: oa from './reset.css';
 }
 
 .fade-enter-active,
@@ -46,4 +50,21 @@ header .user_info a {
 .fade-enter,
 .fade-leave-active {
     opacity: 0
+}
+
+._error {
+    margin-top: 128px;
+    width: 420px;
+    text-align: center;
+    composes: m from './reset.css';
+}
+
+._error svg {
+    width: 260px;
+}
+
+._error>p {
+    font-size: 18px;
+    color: #999;
+    margin-top: 36px;
 }
