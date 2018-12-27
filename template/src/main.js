@@ -5,8 +5,6 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 /* styles*/
 import 'element-ui/lib/theme-chalk/index.css'
-import "B/assets/css/reset.css"
-import "B/assets/css/page.css"
 
 /* structure*/
 import App from './App'
