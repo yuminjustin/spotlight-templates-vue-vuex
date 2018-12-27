@@ -2,10 +2,10 @@
     <header>
         <el-row>
             <el-col :span="6">
-                <h1 class="tcenter" @click="hello">Spotlight for Vue</h1>
+                <h1 :class="style.tcenter" @click="hello">Spotlight for Vue</h1>
             </el-col>
             <el-col :span="18">
-                <p class="r user_info">
+                <p :class="style.user_info">
                     <span>\{{$store.state.userInfo.name}}</span> ,你好
                 </p>
             </el-col>
@@ -13,9 +13,11 @@
     </header>
 </template>
 <script>
+    import style from "B/assets/css/page.css"
     export default {
         data() {
             return {
+               style
             };
         },
         mounted() {
