@@ -34,4 +34,6 @@ This template is base on webpack, support for vuejs<br>
 
 3.Upgrade to webpack4
 
+4.Upgrade gulp
+
 enjoy!
