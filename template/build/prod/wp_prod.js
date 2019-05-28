@@ -30,9 +30,7 @@ var _build = config.build,
                 'process.env': _build.env
             }),
             new VueLoaderPlugin(),
-            new CleanWebpackPlugin(_build.outputPathName, {
-                root: path.resolve(__dirname, '../../')
-            }),
+            new CleanWebpackPlugin(),
             new MiniCssExtractPlugin(utils.filenames('css')),
             new CopyWebpackPlugin([{
                 from: _build.static,
