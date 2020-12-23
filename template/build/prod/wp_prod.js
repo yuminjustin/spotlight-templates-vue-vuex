@@ -3,7 +3,8 @@ var path = require('path')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
-var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+var TerserPlugin = require('terser-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -70,10 +71,13 @@ var _build = config.build,
                 }
             },
             minimizer: [
-                new UglifyJsPlugin({
-                    cache: true,
-                    parallel: true,
-                    sourceMap: true
+                // new UglifyJsPlugin({
+                //     cache: true,
+                //     parallel: true,
+                //     sourceMap: true
+                // }),
+                new TerserPlugin({
+                    test: /\.js(\?.*)?$/i,
                 }),
                 new OptimizeCSSPlugin({})
             ]
