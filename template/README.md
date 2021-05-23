@@ -32,6 +32,6 @@ This template is base on webpack, support for vuejs<br>
         try_files $uri $uri/ /index.html;
     }
 
-3.Upgrade to webpack4
+3.Upgrade to webpack5
 
 enjoy!

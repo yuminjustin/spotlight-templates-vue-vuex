@@ -1,19 +1,19 @@
 /* dev webpack 配置 */
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var { VueLoaderPlugin } = require('vue-loader');
-var webpackBase = require('../common/base');
-var utils = require('../common/utils');
-var config = require('../config');
+let webpack = require('webpack');
+let { merge } = require('webpack-merge');
+let { VueLoaderPlugin } = require('vue-loader');
+let webpackBase = require('../common/base');
+let utils = require('../common/utils');
+let config = require('../config');
 
 // 入口 (多)
 utils.addServerEntry(webpackBase.entry)
 
-var _dev = config.dev,
+let _dev = config.dev,
     HWP_arr = utils.HtmlWPMaker(_dev),
     plugins = HWP_arr.concat([
         new webpack.DefinePlugin({
-            'process.env': _dev.env
+            'process.env.NODE_ENV': _dev.env
         }),
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin()
@@ -36,7 +36,7 @@ var _dev = config.dev,
             historyApiFallback: _dev.html5Router,
             hot: true,
             compress: true,
-            host: '0.0.0.0',
+            host: _dev.host,
             port: _dev.port,
             open: true,
             overlay: { //当有编译错误或者警告的时候显示一个全屏overlay
@@ -56,7 +56,7 @@ var _dev = config.dev,
             stats: {
                 colors: true
             },
-            before: function (app) {
+            before: (app) => {
                 config.dev.serverHandler && config.dev.serverHandler(app)
             }
         }

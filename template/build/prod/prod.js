@@ -1,21 +1,18 @@
 /* prod webpack 配置 */
-var path = require('path')
+let path = require('path')
 var webpack = require('webpack')
-var merge = require('webpack-merge')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-// var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-var TerserPlugin = require('terser-webpack-plugin');
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var {
-    VueLoaderPlugin
-} = require('vue-loader');
-var utils = require('../common/utils')
-var webpackBase = require("../common/base")
-var config = require('../config')
+let { merge } = require('webpack-merge');
+let CopyWebpackPlugin = require('copy-webpack-plugin')
+let TerserPlugin = require('terser-webpack-plugin');
+let CssMinimizerPlugin  = require('css-minimizer-webpack-plugin');
+let MiniCssExtractPlugin = require("mini-css-extract-plugin");
+let { CleanWebpackPlugin } = require('clean-webpack-plugin');
+let { VueLoaderPlugin } = require('vue-loader');
+let utils = require('../common/utils')
+let webpackBase = require("../common/base")
+let config = require('../config')
 
-var _build = config.build,
+let _build = config.build,
     HWP_arr = utils.HtmlWPMaker(_build),
     webpackConfig = {
         mode: 'production',
@@ -25,30 +22,36 @@ var _build = config.build,
         output: Object.assign(utils.filenames('js'), {
             path: path.resolve(__dirname, _build.outputPath)
         }),
-        devtool: '#source-map',
+        devtool: false,
         plugins: HWP_arr.concat([
             new webpack.DefinePlugin({
-                'process.env': _build.env
+                'process.env.NODE_ENV': _build.env
             }),
             new VueLoaderPlugin(),
             new CleanWebpackPlugin(),
             new MiniCssExtractPlugin(utils.filenames('css')),
-            new CopyWebpackPlugin([{
-                from: _build.static,
-                to: _build.newStatic,
-                ignore: ['.*']
-            }])
+            new CopyWebpackPlugin({
+                patterns: [{
+                    from: _build.static,
+                    to: _build.newStatic,
+                    globOptions: {
+                        ignore: ['.*']
+                    }
+                }]
+
+            })
         ]),
-        optimization: { /* 参考 webpack 官方示例配置 特殊要求自行配置*/
+        optimization: {
+            /* 参考 webpack 官方示例配置 特殊要求自行配置*/
             /* https://github.com/webpack/webpack/tree/master/examples */
-            occurrenceOrder: true,
+            // occurrenceOrder: true,
             runtimeChunk: {
                 name: "manifest"
             },
             splitChunks: {
                 cacheGroups: {
                     vendor: {
-                        test: _build.cssAllInOne ? function (module) {
+                        test: _build.cssAllInOne ? (module) => {
                             return (
                                 module.resource &&
                                 /\.js$/.test(module.resource) &&
@@ -71,15 +74,8 @@ var _build = config.build,
                 }
             },
             minimizer: [
-                // new UglifyJsPlugin({
-                //     cache: true,
-                //     parallel: true,
-                //     sourceMap: true
-                // }),
-                new TerserPlugin({
-                    test: /\.js(\?.*)?$/i,
-                }),
-                new OptimizeCSSPlugin({})
+                new TerserPlugin({}),
+                new CssMinimizerPlugin({})
             ]
         }
     }
@@ -87,9 +83,8 @@ var _build = config.build,
 
 // webpack 打包报告 
 if (_build.bundleAnalyzerReport) {
-    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+    let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
     webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
-
 
 module.exports = merge(webpackBase, webpackConfig)
