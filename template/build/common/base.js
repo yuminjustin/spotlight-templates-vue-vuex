@@ -5,8 +5,6 @@ var config = require("../config")
 var codeBase = path.join(__dirname, '../../src'),
     _dir = process.env.NODE_ENV === 'production' ? './static' : 'static';
 
-console.log(_dir)
-
 module.exports = {
     entry: config.entry,
     resolve: {
